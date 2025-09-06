@@ -4,10 +4,11 @@ metadata:
   name: my-app-service
   namespace: dev
 spec:
-  type: NodePort        # expose the service outside the cluster
+  type: NodePort
   selector:
     app: my-app
   ports:
-    - port: 8888       # cluster port
-      targetPort: 8888 # container port
-      nodePort: 8888   # host port you want to use (your VM port)
+    - port: 8888         # container sees this as 8888
+      targetPort: 8888
+      nodePort: 31833    # exposed on host
+      protocol: TCP
